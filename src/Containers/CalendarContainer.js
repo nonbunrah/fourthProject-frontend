@@ -10,15 +10,7 @@ class CalendarContainer extends Component {
 		showMonthPopup: false,
 		showYearPopup: false
 	};
-
-	// previousMonth = () => {
-	// 	this.setState({
-	// 		dateContext: //moment.js for 1 month ago
-	// 	})
-	// }
-
-	//functions to pass down into calendar as props
-
+	
 	render () {
 		return (
 			<Calendar 

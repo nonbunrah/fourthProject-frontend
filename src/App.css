@@ -12,3 +12,8 @@ footer {
     padding-top: 15px;
     bottom:  0; */
 }
+
+.deleteButton {
+  background: red;
+  color: white;
+}

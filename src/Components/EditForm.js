@@ -1,37 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 
-const initialState = {
-  eventName: "",
-  eventDescription: "",
-  location: "",
-  time: ""
-}
+class EditForm extends Component {
 
-class Event extends Component {
-  state = {
-    eventName: "",
-    eventDescription: "",
-    location: "",
-    time: "",
- }
+  componentDidMount = () => {
+    console.log(this.props.location.state)
+    if(this.props.location.state !== undefined) {
+      document.getElementById('name').value=this.props.location.state.eventName
+      document.getElementById('description').value=this.props.location.state.eventDescription
+      document.getElementById('location').defaultValue=this.props.location.state.location
+      document.getElementById('time').value=this.props.location.state.time
 
-  handleChange = (event) => {
-    let target = event.target
-    let name = target.name
-    let value = target.value
-    this.setState({[name]:value})
+      this.setState({
+        eventName: this.props.location.state.eventName,
+        eventDescription: this.props.location.state.eventDescription,
+        location: this.props.location.state.location,
+        time: this.props.location.state.time
+      })
+    }
   }
-  
-  // POST request via form
-  handleSubmit = (event) => {
-    fetch('http://localhost:9000/api/events', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(this.state)
-    })
-      .then(response => this.setState(initialState))
-      console.log("event submitted")
-  };
 
   render () {
     return (
@@ -89,4 +75,4 @@ class Event extends Component {
   }
 }
 
-export default Event;
+export default EditForm

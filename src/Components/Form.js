@@ -1,39 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 
-const initialState = {
-  eventName: "",
-  eventDescription: "",
-  location: "",
-  time: ""
+state = {
+  rowid: ""
 }
 
-class Event extends Component {
-  state = {
-    eventName: "",
-    eventDescription: "",
-    location: "",
-    time: "",
- }
-
-  handleChange = (event) => {
-    let target = event.target
-    let name = target.name
-    let value = target.value
-    this.setState({[name]:value})
-  }
-  
-  // POST request via form
-  handleSubmit = (event) => {
-    fetch('http://localhost:9000/api/events', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(this.state)
-    })
-      .then(response => this.setState(initialState))
-      console.log("event submitted")
-  };
-
-  render () {
+class Form extends Component {
+  render() {
     return (
       <div>
         <h1>Event</h1>
@@ -89,4 +61,4 @@ class Event extends Component {
   }
 }
 
-export default Event;
+export default Form

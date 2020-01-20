@@ -7,21 +7,25 @@ class Calendar extends Component {
 	state = {
 		dateContext: this.props.dateContext,
 		//only one will be active at a time
-		activeDate: '',
+		activeDate: this.props.dateContext.format("D"),
 		selectedDay: null
 	};
 
 	nextMonth = () => {
 		this.setState({
-			dateContext: this.state.dateContext.add(1, 'months')
+			dateContext: this.state.dateContext.add(1, 'months'),
+			activeDate: ''
 		})
 	}
 
 	previousMonth = () => {
 		this.setState({
-			dateContext: this.state.dateContext.subtract(1, 'months')
+			dateContext: this.state.dateContext.subtract(1, 'months'),
+			activeDate: ''
 		})
 	}
+
+	// Change the activeDate state to show the entire date (month, day, and year)
 
 	weekdays = moment.weekdays();
 	weekdaysShort = moment.weekdaysShort();
@@ -33,6 +37,10 @@ class Calendar extends Component {
 
 	month = () => {
 		return this.props.dateContext.format("MMMM");
+	}
+
+	monthNumber = () => {
+		return this.props.dateContext.format("M");
 	}
 
 	daysInMonth = () => {
@@ -57,22 +65,6 @@ class Calendar extends Component {
 		this.setState({
 			activeDate: event.target.textContent
 		});
-
-		// // if state is empty...
-		// if (this.state.activeDate == '' && !event.target.classList.contains('current-day')) {
-		// 	//add class to clicked day
-		// 	//then set the state to the newly activated day
-		// 	this.setState({
-		// 		activeDate: event.target.textContent
-		// 	});
-		// } else if (this.state.activeDate != '') {
-		// 	// remove current-day class from all other td elements
-		// 	// add current-day class to event.target
-		// 	// set the state
-		// }
-		// 	else return false
-		// loop through days (td) to see which day is active
-		// state has been changed above
 	}
 
 	render () {
@@ -90,16 +82,22 @@ class Calendar extends Component {
 			);
 		}
 
-		console.log("blanks: ", blanks);
+		// console.log("blanks: ", blanks);
+		// console.log(this.year())
+		// console.log(this.monthNumber())
+		let today = this.state.dateContext;
 
 		let daysInMonth = [];
 		for (let d = 1; d <= this.daysInMonth(); d++) {
+			let formattedDate = `${this.state.dateContext.format('M')}/${ d }/${this.year()}`
+			
 			let todayClass = (d == this.currentDay() ? "day today": "day") 
-			let currentDayClass = (d == this.state.activeDate ? "current-day": "");
+			let currentDayClass = (d == this.state.activeDate ? " current-day": "");
 			daysInMonth.push(
 				<td 
 					key={d} 
-					className={`${todayClass} ${currentDayClass}`} 
+					datadate={formattedDate}
+					className={`${todayClass}${currentDayClass}`} 
 					onClick={this.makeDayActive}
 				>
 						{d}
@@ -140,14 +138,12 @@ class Calendar extends Component {
 
 		return (
 			<div className = "calendar">
-        <h1>Calendar</h1>
 				<button onClick={this.previousMonth} className="previousMonth">Previous Month</button>
 				<button onClick={this.nextMonth} className="nextMonth">Next Month</button>
 				<h2>{this.props.dateContext.format('MMMM')} {this.props.dateContext.format('YYYY')}</h2>
 				<table className="calendar">
 					<thead>
-						<tr className="cal=header">
-
+						<tr className="cal-header">
 						</tr>
 					</thead>
 					<tbody>
