@@ -10,7 +10,7 @@ class CalendarContainer extends Component {
 		showMonthPopup: false,
 		showYearPopup: false
 	};
-	
+
 	render () {
 		return (
 			<Calendar 

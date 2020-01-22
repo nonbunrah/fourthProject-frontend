@@ -50,7 +50,7 @@ class Event extends Component {
           <br />
           <br />
           <label>
-            Event Description:
+            Event Description: 
             <input 
               type="text" 
               name="eventDescription" 
@@ -61,7 +61,7 @@ class Event extends Component {
           <br />
           <br />
           <label>
-            Location:
+            Location: 
             <input 
               type="text" 
               name="location" 
@@ -72,7 +72,7 @@ class Event extends Component {
           <br />
           <br />
           <label>
-            Time:
+            Time: 
             <input 
               type="text" 
               name="time" 

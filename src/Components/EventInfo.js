@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
 
 class EventInfo extends Component {
 
+  // DELETE 
   handleDelete = () => {
     console.log(this.props.rowid)
     fetch(`http://localhost:9000/api/events/${this.props.rowid}`, {
@@ -16,7 +18,9 @@ class EventInfo extends Component {
         console.log("delete unsuccessful")
     })
     .catch(error => console.log(error))
-    alert('deleted')
+    alert('Deleted Event')
+    //refreshes page after delete has been done
+    window.location.reload(true)
   }
 
   render() {
@@ -25,10 +29,11 @@ class EventInfo extends Component {
         <ul>
           <li>
             <b><u>{this.props.eventName}</u></b>
-            <button 
-              type="edit" 
-              value="edit" 
-            >Edit</button>
+            <Link to={`/EditForm/${this.props.rowid}`}>
+              <button>
+                Edit
+              </button>
+            </Link>
             <button 
               className="deleteButton"
               onClick={this.handleDelete}

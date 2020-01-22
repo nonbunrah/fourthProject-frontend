@@ -85,7 +85,7 @@ class Calendar extends Component {
 		// console.log("blanks: ", blanks);
 		// console.log(this.year())
 		// console.log(this.monthNumber())
-		let today = this.state.dateContext;
+		//let today = this.state.dateContext;
 
 		let daysInMonth = [];
 		for (let d = 1; d <= this.daysInMonth(); d++) {
@@ -104,8 +104,6 @@ class Calendar extends Component {
 				</td>
 			)
 		}
-
-		console.log("days:", daysInMonth);
 
 		let totalSlots = [...blanks, ...daysInMonth];
 		let rows = [];
