@@ -33,8 +33,14 @@ class App extends Component {
               let editedEvent = this.state.data.find(function(ele) {
                 return ele.rowid === parseInt(props.match.params.id)
               })
+              console.log(editedEvent);
               // filter out the matching event from this.state.data
-              return <EditForm {...props} event={editedEvent} />
+              return (
+                this.state.data.length
+                ? <EditForm {...props} event={editedEvent} getEvents={this.getEvents}/>
+                : "Loading..."
+              )
+              // if i take out the empty object, says cannot read 'eventName' of undefined in EditForm componentDidMount
               // if we find an event, return the component, if not error out or do something else 
             }} />
             <Route exact path='/' render={(props) => (

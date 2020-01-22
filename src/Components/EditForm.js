@@ -11,25 +11,40 @@ class EditForm extends Component {
 
   componentDidMount = () => {
     this.setState({
-      eventName: this.props.event.eventName,
-      eventDescription: this.props.event.eventDescription,
-      location: this.props.event.location,
-      time: this.props.event.time
+      eventName: this.props.event.eventName || "",
+      eventDescription: this.props.event.eventDescription || "",
+      location: this.props.event.location || "",
+      time: this.props.event.time || ""
     })
   }
+  // if componentDidUpdate is commented out, state is only changed one letter at a time
+  // componentDidUpdate = (prevProps) => {
+  //   if (this.props.event !== prevProps.event) {
+  //     this.setState({
+  //       eventName: this.props.event.eventName || "",
+  //       eventDescription: this.props.event.eventDescription || "",
+  //       location: this.props.event.location || "",
+  //       time: this.props.event.time || ""
+  //     })
+  //   }
+  // }
 
-  // fix this so that update event doesn't 
+  // need to fix this so that update event doesn't stay stagnant
+  // UPDATE: component is unmounting... when i refresh page, the editform/:id becomes stupid
+  // UPDATE fixed that via componentDidUpdate
+
   handleChange = (event) => {
-    let target = event.target
-    let name = target.name
-    let value = target.value
-    this.setState({[event.target.rowid]:value})
+    console.log(event.target.value);
+    this.setState({[event.target.name]:event.target.value})
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
+    // console.log(this.props.event.eventName)
+    // console.log(event.target)
+    // console.log(this.props.event.rowid)
 
-    fetch(`http://localhost:3000/api/events/${this.props.eventid}`, {
+    fetch(`http://localhost:9000/api/events/${this.props.event.rowid}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -39,6 +54,9 @@ class EditForm extends Component {
         time: this.state.time
       })
     })
+     .then(()=> this.props.getEvents())
+     .then(()=> this.props.history.push('/'))
+
   }
 
   render () {

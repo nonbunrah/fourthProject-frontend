@@ -20,6 +20,7 @@ class Event extends Component {
     let name = target.name
     let value = target.value
     this.setState({[name]:value})
+    console.log(value)
   }
   
   // POST request via form
