@@ -66,6 +66,15 @@ class Calendar extends Component {
 		this.setState({
 			activeDate: event.target.dataset.date
 		});
+		
+		let td = document.querySelectorAll('td')
+		td.forEach(td => {
+			td.classList.remove('active-date')
+		})
+		//conditional to check if active date is in state
+		if (this.state.activeDate) {
+			event.target.classList.add('active-date')
+		} 
 		let date = this.state.activeDate.split('/')
 		let month = date[0]
 		let day = date[1]
@@ -82,6 +91,7 @@ class Calendar extends Component {
 			.catch(error => console.log(error))
 	}
 
+	// show this code during pres
 	render () {
 		let weekdays = this.weekdaysShort.map((day) => {
 			return (

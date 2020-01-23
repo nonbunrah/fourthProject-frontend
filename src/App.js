@@ -5,6 +5,7 @@ import EventContainer from './Containers/EventContainer.js'
 import EventInfoContainer from './Containers/EventInfoContainer';
 import EditForm from './Components/EditForm.js';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Home from './Components/Home.js'
 
 class App extends Component {
   state = {
@@ -29,6 +30,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Switch>
+            <Route exact path='/' component={Home} />
             <Route path='/EditForm/:id' render={(props) => {
               let editedEvent = this.state.data.find(function(ele) {
                 return ele.rowid === parseInt(props.match.params.id)
@@ -43,11 +45,11 @@ class App extends Component {
               // if i take out the empty object, says cannot read 'eventName' of undefined in EditForm componentDidMount
               // if we find an event, return the component, if not error out or do something else 
             }} />
-            <Route exact path='/' render={(props) => (
+            <Route exact path='/Calendar' render={(props) => (
               <div>
                 <h1>Calendar App</h1>
                 <CalendarContainer />
-                  <EventContainer />
+                  <EventContainer events={this.state.data}/>
               </div> 
             )} />
           </Switch>

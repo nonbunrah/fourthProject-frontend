@@ -1,3 +1,7 @@
+# Fourth Project - Calendar App
+
+I've created this Calendar App in an effort to better schedule my events. This app allows you to create, delete, and view events per date. When a certain date is clicked, all the events scheduled on that day are shown. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

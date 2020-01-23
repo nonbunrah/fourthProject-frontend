@@ -6,7 +6,10 @@ class EditForm extends Component {
     eventName: "",
     eventDescription: "",
     location: "",
-    time: ""
+    time: "",
+    month: "",
+    day: "",
+    year: ""
   }
 
   componentDidMount = () => {
@@ -14,7 +17,10 @@ class EditForm extends Component {
       eventName: this.props.event.eventName || "",
       eventDescription: this.props.event.eventDescription || "",
       location: this.props.event.location || "",
-      time: this.props.event.time || ""
+      time: this.props.event.time || "",
+      month: this.props.event.month || "",
+      day: this.props.event.day || "",
+      year: this.props.event.year || ""
     })
   }
   // if componentDidUpdate is commented out, state is only changed one letter at a time
@@ -51,11 +57,14 @@ class EditForm extends Component {
         eventName: this.state.eventName,
         eventDescription: this.state.eventDescription,
         location: this.state.location,
-        time: this.state.time
+        time: this.state.time,
+        month: this.state.month,
+        day: this.state.day,
+        year: this.state.year
       })
     })
      .then(()=> this.props.getEvents())
-     .then(()=> this.props.history.push('/'))
+     .then(()=> this.props.history.push('/Calendar'))
 
   }
 
@@ -116,8 +125,44 @@ class EditForm extends Component {
           </label>
           <br />
           <br />
+          <label>
+            Month: 
+            <input 
+              type="int" 
+              name="month" 
+              placeholder="Month"
+              onChange={this.handleChange} 
+              value={this.state.month}
+            />
+          </label>
+          <br />
+          <br />
+          <label>
+            Day: 
+            <input 
+              type="int" 
+              name="day" 
+              placeholder="Day"
+              onChange={this.handleChange} 
+              value={this.state.day}
+            />
+          </label>
+          <br />
+          <br />
+          <label>
+            Year: 
+            <input 
+              type="int" 
+              name="year" 
+              placeholder="Year"
+              onChange={this.handleChange}
+              value={this.state.year} 
+            />
+          </label>
+          <br />
+          <br />
           <input type="submit" value="submit" />
-          <Link to={'/'}>
+          <Link to={'/Calendar'}>
             <button>back</button>
           </Link>
         </form>

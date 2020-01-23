@@ -34,10 +34,20 @@ class Event extends Component {
       console.log("event submitted")
   };
 
+  handleToggle = () => {
+    let eventForm = document.getElementsByClassName('form')[0];
+    if(eventForm.display == "none") {
+      eventForm.style.display = "block";
+    } else {
+      eventForm.style.display = "none";
+    }
+  }
+
   render () {
-    return (
+    return ( 
       <div className="eventForm">
         <h1>Add Event</h1>
+        <button onClick={this.handleToggle}>Show/Hide</button>
         <form className="form" onSubmit={this.handleSubmit}>
           <label>
             Event Name: 
