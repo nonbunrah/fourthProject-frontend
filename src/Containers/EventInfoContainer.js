@@ -11,6 +11,9 @@ class EventInfoContainer extends Component {
         eventDescription={eventInfo.eventDescription}
         location={eventInfo.location}
         time={eventInfo.time}
+        month={eventInfo.month}
+        day={eventInfo.day}
+        year={eventInfo.year}
         />
     })
     return (

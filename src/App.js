@@ -48,8 +48,6 @@ class App extends Component {
                 <h1>Calendar App</h1>
                 <CalendarContainer />
                   <EventContainer />
-                <h1>Event Information</h1>
-                  <EventInfoContainer data={this.state.data} />
               </div> 
             )} />
           </Switch>

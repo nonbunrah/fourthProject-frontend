@@ -83,6 +83,39 @@ class Event extends Component {
           </label>
           <br />
           <br />
+          <label>
+            Month: 
+            <input 
+              type="int" 
+              name="month" 
+              placeholder="Month"
+              onChange={this.handleChange} 
+            />
+          </label>
+          <br />
+          <br />
+          <label>
+            Day: 
+            <input 
+              type="int" 
+              name="day" 
+              placeholder="Day"
+              onChange={this.handleChange} 
+            />
+          </label>
+          <br />
+          <br />
+          <label>
+            Year: 
+            <input 
+              type="int" 
+              name="year" 
+              placeholder="Year"
+              onChange={this.handleChange} 
+            />
+          </label>
+          <br />
+          <br />
           <input type="submit" value="submit" />
         </form>
         <br />

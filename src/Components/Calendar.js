@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import moment from 'moment';
-import './Calendar.css'
+import './Calendar.css';
+import EventInfo from './EventInfo.js';
+import EventInfoContainer from '../Containers/EventInfoContainer';
 
 class Calendar extends Component {
 
@@ -8,20 +10,19 @@ class Calendar extends Component {
 		dateContext: this.props.dateContext,
 		//only one will be active at a time
 		activeDate: this.props.dateContext.format("l"),
-		selectedDay: null
+		selectedDay: null,
+		data: []
 	};
 
 	nextMonth = () => {
 		this.setState({
 			dateContext: this.state.dateContext.add(1, 'months'),
-			activeDate: ''
 		})
 	}
 
 	previousMonth = () => {
 		this.setState({
 			dateContext: this.state.dateContext.subtract(1, 'months'),
-			activeDate: ''
 		})
 	}
 
@@ -65,6 +66,20 @@ class Calendar extends Component {
 		this.setState({
 			activeDate: event.target.dataset.date
 		});
+		let date = this.state.activeDate.split('/')
+		let month = date[0]
+		let day = date[1]
+		let year = date[2]
+
+		let url = `http://localhost:9000/api/events/${month}/${day}/${year}`
+		fetch(url)
+			.then((response) => response.json())
+			.then(data => {
+				this.setState({
+					data: data
+				})
+			})
+			.catch(error => console.log(error))
 	}
 
 	render () {
@@ -81,6 +96,10 @@ class Calendar extends Component {
 			</td>
 			);
 		}
+
+		let dayEvent = this.state.data.map((dayEvent)=>{
+			return <EventInfo event = {dayEvent}/>
+		})
 
 		// console.log("blanks: ", blanks);
 		// console.log(this.year())
@@ -134,6 +153,8 @@ class Calendar extends Component {
 			);
 		});
 
+
+
 		return (
 			<div className="calendar">
 				<button onClick={this.previousMonth} className="previousMonth">Previous Month</button>
@@ -151,6 +172,9 @@ class Calendar extends Component {
 						{trElements}
 					</tbody>
 				</table>
+				<br />
+				<br />
+				{dayEvent}
 				<br />
 				<br />
 			</div>
