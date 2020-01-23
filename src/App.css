@@ -21,3 +21,17 @@ footer {
 .editForm {
   text-decoration: none;
 }
+
+.biggerList {
+  border: 2px solid black;
+  width: 80%;
+  margin: 10px;
+  padding: 2px 0 10px 0;
+}
+
+.eventForm {
+  border-bottom: 4px solid black;
+  margin: 0 auto;
+  text-align: center;
+  text-justify: left;
+}

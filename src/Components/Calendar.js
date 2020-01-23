@@ -7,7 +7,7 @@ class Calendar extends Component {
 	state = {
 		dateContext: this.props.dateContext,
 		//only one will be active at a time
-		activeDate: this.props.dateContext.format("D"),
+		activeDate: this.props.dateContext.format("l"),
 		selectedDay: null
 	};
 
@@ -63,7 +63,7 @@ class Calendar extends Component {
 
 	makeDayActive = (event) => {
 		this.setState({
-			activeDate: event.target.textContent
+			activeDate: event.target.dataset.date
 		});
 	}
 
@@ -96,7 +96,7 @@ class Calendar extends Component {
 			daysInMonth.push(
 				<td 
 					key={d} 
-					datadate={formattedDate}
+					data-date={formattedDate}
 					className={`${todayClass}${currentDayClass}`} 
 					onClick={this.makeDayActive}
 				>
@@ -135,10 +135,10 @@ class Calendar extends Component {
 		});
 
 		return (
-			<div className = "calendar">
+			<div className="calendar">
 				<button onClick={this.previousMonth} className="previousMonth">Previous Month</button>
 				<button onClick={this.nextMonth} className="nextMonth">Next Month</button>
-				<h2>{this.props.dateContext.format('MMMM')} {this.props.dateContext.format('YYYY')}</h2>
+				<h2 className="monthYear">{this.props.dateContext.format('MMMM')} {this.props.dateContext.format('YYYY')}</h2>
 				<table className="calendar">
 					<thead>
 						<tr className="cal-header">
@@ -151,6 +151,8 @@ class Calendar extends Component {
 						{trElements}
 					</tbody>
 				</table>
+				<br />
+				<br />
 			</div>
 		)
 	}

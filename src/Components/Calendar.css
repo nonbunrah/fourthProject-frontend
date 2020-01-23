@@ -1,21 +1,24 @@
 .calendar-container,
-.calendar,
 .calendar-header,
 td,
 tr {
-    padding: 0;
-    margin: 0;
+    padding: 2px;
+    margin: 2px;
+    border: 2px solid black;
 }
 
-.calendar-container {
-    border: 2px solid skyblue;
+.calendar {
+    padding: 2px;
+    margin: 2px;
+    border-bottom: 4px solid black;
 }
 
 .calendar {
     background-color: white;
     border-spacing: 0;
     border-collapse: collapse;
-    width: 100%;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .calendar-header {
@@ -37,6 +40,8 @@ tr {
 
 .week-day {
     font-size: 0.8em;
+    font-weight: bold;
+    background-color: rgb(17, 139, 221);
 }
 
 .day {
@@ -51,12 +56,12 @@ tr {
 }
 
 .current-day {
-    background-color: #4285f4;
+    background-color: rgb(253, 253, 104);
     width: 28px;
     height: 28px;
     line-height: 28px;
     border-radius: 2%;
-    color: white;
+    color: black;
 }
 
 .today {
@@ -112,4 +117,8 @@ tr {
 
 .label-month {
     cursor: pointer;
+}
+
+.monthYear {
+    text-align: center;
 }

@@ -36,8 +36,8 @@ class Event extends Component {
 
   render () {
     return (
-      <div>
-        <h1>Event</h1>
+      <div className="eventForm">
+        <h1>Add Event</h1>
         <form className="form" onSubmit={this.handleSubmit}>
           <label>
             Event Name: 
@@ -85,6 +85,8 @@ class Event extends Component {
           <br />
           <input type="submit" value="submit" />
         </form>
+        <br />
+        <br />
       </div>
     )
   }

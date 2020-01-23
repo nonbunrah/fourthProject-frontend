@@ -26,7 +26,7 @@ class EventInfo extends Component {
   render() {
     return (
       <div>
-        <ul>
+        <ul className="biggerList">
           <li>
             <b><u>{this.props.eventName}</u></b>
             <Link to={`/EditForm/${this.props.rowid}`}>
