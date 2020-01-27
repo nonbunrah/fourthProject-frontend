@@ -71,6 +71,8 @@ class Calendar extends Component {
 		td.forEach(td => {
 			td.classList.remove('active-date')
 		})
+
+		// show this code during pres
 		//conditional to check if active date is in state
 		if (this.state.activeDate) {
 			event.target.classList.add('active-date')
@@ -91,7 +93,6 @@ class Calendar extends Component {
 			.catch(error => console.log(error))
 	}
 
-	// show this code during pres
 	render () {
 		let weekdays = this.weekdaysShort.map((day) => {
 			return (
