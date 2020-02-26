@@ -4,6 +4,8 @@ import './Calendar.css';
 import EventInfo from './EventInfo.js';
 import EventInfoContainer from '../Containers/EventInfoContainer';
 
+//react app
+
 class Calendar extends Component {
 
 	state = {
