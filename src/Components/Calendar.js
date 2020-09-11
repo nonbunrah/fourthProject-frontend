@@ -5,6 +5,7 @@ import EventInfo from './EventInfo.js';
 import EventInfoContainer from '../Containers/EventInfoContainer';
 
 //react app
+// need to make changes
 
 class Calendar extends Component {
 
