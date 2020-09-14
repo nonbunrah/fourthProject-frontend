@@ -28,6 +28,8 @@ class App extends Component {
   render () {
     return (
       <div className="App">
+        <br /><br />
+        <div className='bar'></div>
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={Home} />
